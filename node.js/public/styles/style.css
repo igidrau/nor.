@@ -1,0 +1,150 @@
+
+/* Modes : Couleurs */
+/* 1- Public, Lecture */
+.public{
+    border: 2px solid #7bcef1;
+}
+.public:invalid { 
+    color: #2db9f3;
+    border-color: #7bcef1;
+}
+.public:hover {
+    border-color: #2db9f3;
+}
+.public:hover:invalid { 
+    border-color: #2db9f3;
+}
+.public:focus { 
+    border-color: #258eb9;
+}
+.public:focus:invalid { 
+    border-color: #258eb9;
+}
+
+/*Lecture*/
+/*Navigateurs modernes*/
+.read::placeholder {
+  text-transform: uppercase;
+  opacity: 1;
+  color: #556d82;
+}
+ /*Anciens nabvigateurs*/
+.read::-webkit-input-placeholder { /*Chrome/Opera/Safari */ 
+  text-transform: uppercase;
+  opacity: 1;
+  color: #7da3c1;
+}
+.read::-moz-placeholder {  /*Firefox 19+ */
+  text-transform: uppercase;
+  opacity: 1;
+ color: #7da3c1;
+}
+.read:-ms-input-placeholder { /* IE 10+ */
+  text-transform: uppercase;
+  opacity: 1;
+  color: #7da3c1;
+}
+.read:-moz-placeholder { /* Firefox 18- */
+  text-transform: uppercase;
+  opacity: 1;
+  color: #7da3c1;
+}
+
+/*Edition*/
+.auth{
+    border-color: #f885a6;
+}
+.auth:invalid { 
+    color: #f61454;
+    border-color: #f885a6;
+}
+.auth:hover {
+    border-color: #f61454;
+}
+.auth:hover:invalid { 
+    border-color: #f61454;
+}
+.auth:focus { 
+    border-color: #c35f7b;
+}
+.auth:focus:invalid { 
+    border-color: #c35f7b;
+}
+
+/*Themes*/
+.dark{
+    background-color: #1A1A1A;
+    color: #fafafa;
+}
+.dark::placeholder {
+  opacity: 1;
+  color: #c6c6c6;
+}
+.dark::-webkit-input-placeholder { /*Chrome/Opera/Safari */ 
+  opacity: 1;
+  color: #c6c6c6;
+}
+.dark::-moz-placeholder {  /*Firefox 19+ */
+  opacity: 1;
+  color: #c6c6c6;
+}
+.dark:-ms-input-placeholder { /* IE 10+ */
+  opacity: 1;
+  color: #c6c6c6;
+}
+.dark:-moz-placeholder { /* Firefox 18- */
+  opacity: 1;
+  color: #c6c6c6;
+}
+/*Formulaire */
+
+.in{
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 20px;
+    font-family: 'Roboto Slab', serif;
+    width: 80%;
+    height: 30px;
+    font-size: 15pt;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.write{
+    height: 70%;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13pt;
+    text-align: justify;
+    resize: none;
+}
+
+/*Sous-texte*/
+#subText{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10pt;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 35px;
+	 
+}
+#subText.up{
+   margin-top: -30px;;
+}
+/* Désactivation du dégradé sur Firefox */
+:invalid{
+    box-shadow: none;
+}
+
+
+
+.editZone{ /*CodeMirror: Editeur Markdown */
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

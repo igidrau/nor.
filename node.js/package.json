@@ -1,0 +1,19 @@
+{
+  "name": "el-e",
+  "version": "0.1.0",
+  "description": "Le site de Elinor Bissery",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Elinor Bissery",
+  "license": "",
+  "dependencies": {
+    "cookie-session": "^2.0.0-beta.3",
+    "ejs": "~2.5.7",
+    "ent": "~2.2.0",
+    "express": "~4.16.2",
+    "sqlite3": "~3.1.13"
+  }
+}
