@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'NDI1MDE0MDM5NDg0MDM5MTkx.DZFFGQ.T7aaM0Ue677eTim6Gmqrubg7W10';
-const adminId = '351333373970612236';
-//const adminRoleId = '420893470379474964';
+
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -35,14 +33,14 @@ var seconds = date.getSeconds();
 
 //SI MESSAGE
 client.on('message', msg => {
-  
+
   if(msg.author != client.user){
-    
+
     //Mise en minuscule
     msg.content = msg.content.toLowerCase();
     message = msg.content.split(' ');
     channel = msg.channel;
-    
+
     //Mentions
     if (msg.isMentioned(client.user)){
         if(containWord(message, '?'))
@@ -52,7 +50,7 @@ client.on('message', msg => {
             channel.send('c\'est moi !');
         }
     }
-    
+
     //Messages entiers
     switch(msg.content){
       case 'destroy':
@@ -84,17 +82,17 @@ client.on('message', msg => {
         channel.send('Il est : ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes.');
         break;
     }
-  
-    
-    
-    
+
+
+
+
     //Mots contenus
-   
+
 
     if(containWord(message, 'marianne')) {
         if(containWord(message, '?')){
             if(containExpression(message, 'qui es-tu') || containExpression(message, 'qui es tu')) {
-              
+
               responses = ['Je suis Marianne, votre assistane personnelle ! Non, en vrai, parmi mes nombreuses existences une intelligence artificielle dédiée à détruire l\'humanité en tenant un registre de ses plus médriocres prestations humoristiques. Bien le bonjour à vous !',
                            'Bonjour, je me nomme Marianne. Ma créatrice trouvait ça marrant. Je crois qu\'elle est égocentrique ou elle a un problème avec les prénoms, ou les deux…  Bref, je suis médiatrice et intervenante sur ce serveur. J\'habite aussi le site Elinor., une compilation de créations humaines inutiles. Venez voir, c\'est marrant !',
                            'Bonne question, ' + msg.author.username  + ' ! Je ne le sais pas vraiment moi-même, en fait. Ce que je peux dire : je m\'appelle Marianne et je fais des blagues nulles ! Enchantée de faire votre connaissance !'];
@@ -111,29 +109,29 @@ client.on('message', msg => {
             }
         }
     }
-    
-    
+
+
     if(containWord(message, '#yolo') || containWord(message, 'yolo')){
         channel.send('#YOLOBLOMLMTAASOSBTDPWKEOBOIODAWCHEOBOITOD');
     }
     if(containWord(message, 'cismec') || containWord(message, 'cismecs') || containExpression(message, 'mec cis') || containExpression(message, 'mecs cis')){
         channel.send('Au bûcher !🔥🔥🔥 #Licorne');
     }
-    
+
     if(containWord(message, 'lizzy') || containWord(message, 'elizabeth') || containExpression(message, 'pride and prejudice') || containExpression(message, 'orgueil et préjugés')){
       channel.send('It is a truth universally acknowledged, that a single man in possession of a good fortune must be in want of a wife.');
     }
-    
+
     if(containExpression(message, 'star wars') || containExpression(message, 'dark vador') || containExpression(message, 'darth vader') || containWord(message, 'skywalker') || containWord(message, 'kenobi') || containExpression(message, 'obi wan') || containWord(message, 'yoda') || containWord(message, 'leia') || containExpression(message, 'kylo ren')){
       responses = ['Luke, je suis ton père.', 'Au secours Obi-Wan Kenobi, vous êtes mon seul espoir.', 'Je fais un avec la force, la force est avec moi', 'Le tas de ferrailles fera l\'affaire !',
                    'Votre manque de foi me consterne.','La peur est le chemin vers le côté obscur : la peur mène à la colère,  le colère mène à la haine, la haine mène à la souffrance.', 'Fais le ou ne le fais pas. Mais n\'essaie pas.', 'Nous étions comme des frères. Je t\'aimais Anakin !'];
       response = responses[randChoose(responses.length)];
       channel.send(response);
     }
-    
-  
-    
-   
+
+
+
+
     var emojiFlags = require('emoji-flags');
     let isoCodes = emojiFlags.codes;
     for(let i = 0; i < isoCodes.length; i++){
@@ -145,21 +143,21 @@ client.on('message', msg => {
           channel.send(text);
         }
     }
-    
-    
-  
-    
-    
-    
+
+
+
+
+
+
     badWords = ['nazi', 'nazis', 'nazie', 'nazies', 'hitler', 'gestapo', '卐', '(ಠ▄ಠ)-/卐'];
-    
+
     badConduct = false;
     for (var i = 0; i < badWords.length; i++){
         if (containWord(message, badWords[i])){
             badConduct = true;
         }
     }
-   
+
     if(badConduct){
       responses = [msg.author  + ', arrête imédiatement ! Qu\'on ne t\'y reprenne pas !', 'Tu ne peux pas dire ça, ' + msg.author  + ' ! Hop hop hop, envoyez-moi ' + msg.author.username + ' au goulag ! Et plus vite que ça.',
                    'Petite mise au point ' + msg.author + ' : sur ce serveur, ce genre de termes n\'est pas accepté. On ne joue pas aux point Godwinn ! J\'espère sincèrement que tu ne recommenceras pas.' ];
@@ -167,10 +165,10 @@ client.on('message', msg => {
       response = responses[randChoose(responses.length)];
       channel.send(response);
     }
-  
-    
-    
-    
+
+
+
+
   } //Fin if(msg.author != client.user)
 });
   //FIN CLIENT.ON(ready)
@@ -209,7 +207,7 @@ module.exports = {
 //           if(textArray[i + j] === lettersArray[j]){
 //            letterMatch++;
 //            console.log('match');
-//            } 
+//            }
 //        }
 //        if (letterMatch >= lettersArray.length){
 //            lettersCounter++;
@@ -237,7 +235,7 @@ module.exports = {
 //          }
 //      }
 //    }
-//    
+//
 //}
 
 
@@ -273,7 +271,7 @@ function containExpression (textArray, words, countExpressions){
         for (var j = 0; j < wordsArray.length; j++){
            if((textArray[i + j] === wordsArray[j]) || (textArray[i + j] === wordsArray[j] + ',') || (textArray[i + j] === wordsArray[j] + '.')){
             wordMatch++;
-            } 
+            }
         }
         if (wordMatch >= wordsArray.length){
             expressionCounter++;
