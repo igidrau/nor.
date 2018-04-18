@@ -1,3 +1,6 @@
+const keys = require('../private/discord-keys.json');
+const token = keys.token;
+const adminId = keys.elinorId;
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
