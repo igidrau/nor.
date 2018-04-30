@@ -16,19 +16,13 @@ client.on('disconnected', () => {
 
 
 //TEMPS
-var date = new Date();
+var time = require('time');
+var date = new time.Date();
+date.setTimezone("Europe/Paris");
 var hours = date.getHours();
 var minutes = date.getMinutes();
 var seconds = date.getSeconds();
-//client.setInterval(function(){
-//  //let miliseconds = date.Milliseconds();
-//  if((hours == 22) && (minutes == 36) && (seconds === 0)){
-//  let channel = client.channels.get(425276881345052672);
-//  channel.send('Il est 22h36.');
-//  }
-//
-//}, 2000);
-//
+
 
 
 
@@ -41,8 +35,12 @@ client.on('message', msg => {
 
     //Mise en minuscule
     msg.content = msg.content.toLowerCase();
-    message = msg.content.split(' ');
-    channel = msg.channel;
+    let pseudo = msg.author.username;
+    if(msg.guild.member(msg.author).displayName != null){
+      pseudo = msg.guild.member(msg.author).displayName;
+    }
+    let message = msg.content.split(' ');
+    let channel = msg.channel;
 
     //Mentions
     if (msg.isMentioned(client.user)){
@@ -60,6 +58,9 @@ client.on('message', msg => {
         if(msg.author.id == adminId){
           client.destroy();
         }
+        break;
+      case 'pseudo':
+        channel.send(pseudo);
         break;
       case 'ping':
       case '!ping':
@@ -81,7 +82,7 @@ client.on('message', msg => {
       case 'time':
       case 'hour':
       case 'hours':
-        updateTime();
+      updateTime();
         channel.send('Il est : ' + hours + ' heures, ' + minutes + ' minutes et ' + seconds + ' secondes.');
         break;
     }
@@ -96,10 +97,10 @@ client.on('message', msg => {
         if(containWord(message, '?')){
             if(containExpression(message, 'qui es-tu') || containExpression(message, 'qui es tu')) {
 
-              responses = ['Je suis Marianne, votre assistane personnelle ! Non, en vrai, parmi mes nombreuses existences une intelligence artificielle dédiée à détruire l\'humanité en tenant un registre de ses plus médriocres prestations humoristiques. Bien le bonjour à vous !',
+              let responses = ['Je suis Marianne, votre assistane personnelle ! Non, en vrai, parmi mes nombreuses existences une intelligence artificielle dédiée à détruire l\'humanité en tenant un registre de ses plus médriocres prestations humoristiques. Bien le bonjour à vous !',
                            'Bonjour, je me nomme Marianne. Ma créatrice trouvait ça marrant. Je crois qu\'elle est égocentrique ou elle a un problème avec les prénoms, ou les deux…  Bref, je suis médiatrice et intervenante sur ce serveur. J\'habite aussi le site Elinor., une compilation de créations humaines inutiles. Venez voir, c\'est marrant !',
-                           'Bonne question, ' + msg.author.username  + ' ! Je ne le sais pas vraiment moi-même, en fait. Ce que je peux dire : je m\'appelle Marianne et je fais des blagues nulles ! Enchantée de faire votre connaissance !'];
-              response = responses[randChoose(responses.length)];
+                           'Bonne question, ' + pseudo + ' ! Je ne le sais pas vraiment moi-même, en fait. Ce que je peux dire : je m\'appelle Marianne et je fais des blagues nulles ! Enchantée de faire votre connaissance !'];
+              let response = responses[randChoose(responses.length)];
               channel.send(response);
             } else {
                 channel.send('On me parle ?');
@@ -126,9 +127,9 @@ client.on('message', msg => {
     }
 
     if(containExpression(message, 'star wars') || containExpression(message, 'dark vador') || containExpression(message, 'darth vader') || containWord(message, 'skywalker') || containWord(message, 'kenobi') || containExpression(message, 'obi wan') || containWord(message, 'yoda') || containWord(message, 'leia') || containExpression(message, 'kylo ren')){
-      responses = ['Luke, je suis ton père.', 'Au secours Obi-Wan Kenobi, vous êtes mon seul espoir.', 'Je fais un avec la force, la force est avec moi', 'Le tas de ferrailles fera l\'affaire !',
+      let responses = ['Luke, je suis ton père.', 'Au secours Obi-Wan Kenobi, vous êtes mon seul espoir.', 'Je fais un avec la force, la force est avec moi', 'Le tas de ferrailles fera l\'affaire !',
                    'Votre manque de foi me consterne.','La peur est le chemin vers le côté obscur : la peur mène à la colère,  le colère mène à la haine, la haine mène à la souffrance.', 'Fais le ou ne le fais pas. Mais n\'essaie pas.', 'Nous étions comme des frères. Je t\'aimais Anakin !'];
-      response = responses[randChoose(responses.length)];
+      let response = responses[randChoose(responses.length)];
       channel.send(response);
     }
 
@@ -152,9 +153,9 @@ client.on('message', msg => {
 
 
 
-    badWords = ['nazi', 'nazis', 'nazie', 'nazies', 'hitler', 'gestapo', '卐', '(ಠ▄ಠ)-/卐'];
+    let badWords = ['nazi', 'nazis', 'nazie', 'nazies', 'hitler', 'gestapo', '卐', '(ಠ▄ಠ)-/卐', 'badword'];
 
-    badConduct = false;
+    let badConduct = false;
     for (var i = 0; i < badWords.length; i++){
         if (containWord(message, badWords[i])){
             badConduct = true;
@@ -162,10 +163,10 @@ client.on('message', msg => {
     }
 
     if(badConduct){
-      responses = [msg.author  + ', arrête imédiatement ! Qu\'on ne t\'y reprenne pas !', 'Tu ne peux pas dire ça, ' + msg.author  + ' ! Hop hop hop, envoyez-moi ' + msg.author.username + ' au goulag ! Et plus vite que ça.',
+      responses = [msg.author  + ', arrête imédiatement ! Qu\'on ne t\'y reprenne pas !', 'Tu ne peux pas dire ça, ' + msg.author  + ' ! Hop hop hop, envoyez-moi ' + pseudo + ' au goulag ! Et plus vite que ça.',
                    'Petite mise au point ' + msg.author + ' : sur ce serveur, ce genre de termes n\'est pas accepté. On ne joue pas aux point Godwinn ! J\'espère sincèrement que tu ne recommenceras pas.' ];
       msg.delete();
-      response = responses[randChoose(responses.length)];
+      let response = '*(' + pseudo + ' a mal parlé)* '  + responses[randChoose(responses.length)];
       channel.send(response);
     }
 
@@ -308,8 +309,10 @@ function randChoose (nbItems){
 //}
 
 function updateTime(){
-  date = new Date();
+  date = new time.Date();
+  date.setTimezone("Europe/Paris");
   hours = date.getHours();
   minutes = date.getMinutes();
   seconds = date.getSeconds();
+
 }
