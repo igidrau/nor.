@@ -108,7 +108,7 @@ module.exports = {
       forId: null,
       inId: null,
       chance: 1.0,
-      trigger: ["nazi", "hitler", "gestapo", "卐", "badword", "salope", "pute"],
+      trigger: ["nazi", "hitler", "gestapo", "卐", "badword", "salope", "pute", "gougnafier"],
       type: "function",
       fcn: msg => {CMD.flag(msg);}
     }
@@ -140,7 +140,7 @@ module.exports = {
       in: "partout",
       forId: [CONF.role.member],
       inId: null,
-      chance: 0.3,
+      chance: 1,
       trigger: ["star wars", "dark vador", "darth vader", "skywalker", "kenobi", "obi wan", "yoda", "leia", "kylo ren"],
       type: "text",
       text: ["Luke, je suis ton père.", "Au secours Obi-Wan Kenobi, vous êtes mon seul espoir.",
