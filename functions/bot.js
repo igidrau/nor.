@@ -55,13 +55,13 @@ CMD = {
    flag: msg => {
     let responses = [msg.author  + ", arrête imédiatement ! Qu'on ne t'y reprenne pas !", "Tu ne peux pas dire ça, " + msg.author  + " ! Hop hop hop, envoyez-moi " + pseudo + " au goulag ! Et plus vite que ça.",
                  "Petite mise au point " + msg.author + " : sur ce serveur, ce genre de termes n'est pas accepté. On ne joue pas avec ça ! J'espère sincèrement que tu ne recommenceras pas." ];
-    msg.delete();
+    //msg.delete();
     let response = '*(' + pseudo + ' a mal parlé)* '  + responses[slc(responses.length)];
     msg.channel.send(response);
   },
   vote: async msg => {
   		  await msg.react("✅");
-        await msg.react("🤷");
+        await msg.react(":opm:");
   		  await msg.react("❌");
   },
   destroy: function(){
